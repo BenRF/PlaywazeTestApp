@@ -1,10 +1,6 @@
 ﻿using NorthwindModels;
-using Raven.Client.Documents;
 using Raven.Client.Documents.Indexes;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace PlaywazeTestApp {
     class Orders_ByEmployee : AbstractIndexCreationTask<Order, Orders_ByEmployee.Result> {

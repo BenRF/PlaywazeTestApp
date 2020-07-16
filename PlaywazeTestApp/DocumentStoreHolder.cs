@@ -16,20 +16,9 @@ namespace PlaywazeTestApp {
                 };
 
                 store.Initialize();
-
-                var asm = Assembly.GetExecutingAssembly();
-                IndexCreation.CreateIndexes(asm, store);
-
-                // Try to retrieve a record of this database
-                var databaseRecord = store.Maintenance.Server.Send(new GetDatabaseRecordOperation(store.Database));
-
-                if (databaseRecord != null)
-                    return store;
-
-                var createDatabaseOperation =
-                    new CreateDatabaseOperation(new DatabaseRecord(store.Database));
-
-                store.Maintenance.Server.Send(createDatabaseOperation);
+                new OrdersByDate().Execute(store);
+                new CompanyByName().Execute(store);
+                new Orders_ByEmployee().Execute(store);
 
                 return store;
             });
